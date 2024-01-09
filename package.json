@@ -1,6 +1,6 @@
 {
   "name": "holochain-launcher-electron",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "Holochain Launcher Electron (Prototype)",
   "main": "./out/main/index.js",
@@ -14,17 +14,18 @@
     "typecheck": "npm run typecheck:node",
     "start": "electron-vite preview",
     "dev": "concurrently -p \"[{time}] [{name}]\" -n=sveltekit,electron -c=red,blue \"electron-vite dev --watch\" \"yarn run dev:sveltekit\"",
-    "build": "yarn build:sveltekit; yarn typecheck && electron-vite build",
+    "build": "yarn build:sveltekit && yarn typecheck && electron-vite build",
     "setup": "cd rust-utils && yarn && yarn build && cd ..",
     "fetch:default-apps": "curl -L --output resources/default-apps/kando.webhapp https://drive.switch.ch/index.php/s/nSXZlwCYFAl9aRD/download",
     "postinstall": "electron-builder install-app-deps",
     "build:win": "yarn build && electron-builder --win --config",
     "build:mac": "yarn build && electron-builder --mac --config",
     "build:linux": "yarn build && electron-builder --linux --config",
-    "dev:sveltekit": "cd src/renderer; yarn dev",
-    "build:sveltekit": "cd src/renderer; yarn build"
+    "dev:sveltekit": "cd src/renderer && yarn dev",
+    "build:sveltekit": "cd src/renderer && yarn build"
   },
   "dependencies": {
+    "@electron/notarize": "2.2.0",
     "@electron-toolkit/preload": "^3.0.0 ",
     "@electron-toolkit/utils": "^3.0.0",
     "@holochain/client": "^0.16.3",

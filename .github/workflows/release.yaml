@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [windows-2019, macos-11, ubuntu-20.04]
-        # platform: [windows-2019, macos-11]
+        # platform: [windows-2019]
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.13
 
@@ -19,6 +19,13 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
+
+      - name: Setup for macOS code signing
+        if: matrix.platform == 'macos-11'
+        uses: matthme/import-codesign-certs@5565bb656f60c98c8fc515f3444dd8db73545dc2
+        with:
+          p12-file-base64: ${{ secrets.APPLE_CERTIFICATE }}
+          p12-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
 
       - name: setup node
         uses: actions/setup-node@v1
@@ -115,23 +122,18 @@ jobs:
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
-      - id: create-release
-        uses: ncipollo/release-action@v1
-        with:
-          body: 'See assets below to download and install this version.'
-          name: Holochain Launcher Electron (Prototype) v${{ steps.version.outputs.APP_VERSION }}
-          tag: launcher-prototype-v${{ steps.version.outputs.APP_VERSION }}
-          prerelease: true
-          skipIfReleaseExists: true
-
       - name: build and upload the app (macOS)
         if: matrix.platform == 'macos-11'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLE_DEV_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID_EMAIL: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          DEBUG: electron-osx-sign*,electron-notarize*
         run: |
           yarn build:mac
           ls dist
-          gh release upload "launcher-prototype-v${{ steps.version.outputs.APP_VERSION }}" "dist/holochain-launcher-electron-0.0.2.dmg" --clobber
 
       - name: build and upload the app (Linux)
         if: matrix.platform == 'ubuntu-20.04'
@@ -140,13 +142,24 @@ jobs:
         run: |
           yarn build:linux
           ls dist
-          gh release upload "launcher-prototype-v${{ steps.version.outputs.APP_VERSION }}" "dist/holochain-launcher-electron-0.0.2.AppImage" --clobber
 
-      - name: build and upload the app (Windows)
+      - name: build, sign and upload the app (Windows)
         if: matrix.platform == 'windows-2019'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn build:win
+
           ls dist
-          gh release upload "launcher-prototype-v${{ steps.version.outputs.APP_VERSION }}" "dist/holochain-launcher-electron-0.0.2-setup.exe" --clobber
+
+          dotnet tool install --global AzureSignTool
+
+          echo "sha512 before code signing"
+          CertUtil -hashfile "dist/holochain-launcher-electron-${{ steps.version.outputs.APP_VERSION }}-setup.exe" SHA512
+
+          AzureSignTool sign -kvu "${{ secrets.AZURE_KEY_VAULT_URI }}" -kvi "${{ secrets.AZURE_CLIENT_ID }}" -kvt "${{ secrets.AZURE_TENANT_ID }}" -kvs "${{ secrets.AZURE_CLIENT_SECRET }}" -kvc ${{ secrets.AZURE_CERT_NAME }} -tr http://timestamp.digicert.com -v "dist/holochain-launcher-electron-${{ steps.version.outputs.APP_VERSION }}-setup.exe"
+
+          echo "sha512 after code signing"
+          CertUtil -hashfile "dist/holochain-launcher-electron-${{ steps.version.outputs.APP_VERSION }}-setup.exe" SHA512
+
+          gh release upload "v${{ steps.version.outputs.APP_VERSION }}" "dist/holochain-launcher-electron-${{ steps.version.outputs.APP_VERSION }}-setup.exe" --clobber
