@@ -65,7 +65,7 @@ cli
   .addOption(
     new Option(
       '--admin-port <number>',
-      'If specified, the Launcher expectes an external holochain binary to run at this port. Requires the --config-path and --apps-data-dir options to be specified as well.',
+      'If specified, the Launcher expectes an external holochain binary to run at this port. Requires the --lair-url and --apps-data-dir options to be specified as well.',
     ).argParser(parseInt),
   )
   .option(
