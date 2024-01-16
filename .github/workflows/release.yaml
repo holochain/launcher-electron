@@ -2,7 +2,7 @@ name: 'publish'
 on:
   push:
     branches:
-      - release
+      - release-0.3
 
 jobs:
   publish:
@@ -76,7 +76,7 @@ jobs:
           # $HcPath = Get-Command holochain | Select-Object -ExpandProperty Definition
           # Copy-Item $HcPath -Destination resources/bins/holochain-v0.3.0-beta-dev.32.exe
 
-          curl -L --output resources/bins/holochain-v0.3.0-beta-dev.32.exe https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.32/holochain-v0.3.0-beta-dev.32-x86_64-pc-windows-msvc.exe
+          curl -L --output resources/bins/holochain-v0.3.0-beta-dev.32.exe https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.32/holochain-v0.3.0-beta-dev.32-x86_64-pc-windows-msvc.exe
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
@@ -89,14 +89,14 @@ jobs:
           # LAIR_PATH=$(which lair-keystore)
           # cp $LAIR_PATH resources/bins/lair-keystore-v0.4.0
 
-          curl -L --output resources/bins/lair-keystore-v0.4.0 https://github.com/matthme/launcher-electron/releases/download/lair-binaries-v0.4.0/lair-keystore-v0.4.0-x86_64-apple-darwin
+          curl -L --output resources/bins/lair-keystore-v0.4.0 https://github.com/holochain/launcher-electron/releases/download/lair-binaries-v0.4.0/lair-keystore-v0.4.0-x86_64-apple-darwin
           chmod +x ./resources/bins/lair-keystore-v0.4.0
 
           # cargo install holochain --version 0.3.0-beta-dev.32 --locked --features sqlite-encrypted
           # HOLOCHAIN_PATH=$(which holochain)
           # cp $HOLOCHAIN_PATH resources/bins/holochain-v0.3.0-beta-dev.32
 
-          curl -L --output resources/bins/holochain-v0.3.0-beta-dev.32 https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.32/holochain-v0.3.0-beta-dev.32-x86_64-apple-darwin
+          curl -L --output resources/bins/holochain-v0.3.0-beta-dev.32 https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.32/holochain-v0.3.0-beta-dev.32-x86_64-apple-darwin
           chmod +x ./resources/bins/holochain-v0.3.0-beta-dev.32
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
@@ -110,14 +110,14 @@ jobs:
           # LAIR_PATH=$(which lair-keystore)
           # cp $LAIR_PATH resources/bins/lair-keystore-v0.4.0
 
-          curl -L --output resources/bins/lair-keystore-v0.4.0 https://github.com/matthme/launcher-electron/releases/download/lair-binaries-v0.4.0/lair-keystore-v0.4.0-x86_64-unknown-linux-gnu
+          curl -L --output resources/bins/lair-keystore-v0.4.0 https://github.com/holochain/launcher-electron/releases/download/lair-binaries-v0.4.0/lair-keystore-v0.4.0-x86_64-unknown-linux-gnu
           chmod +x ./resources/bins/lair-keystore-v0.4.0
 
           # cargo install holochain --version 0.3.0-beta-dev.32 --locked --features sqlite-encrypted
           # HOLOCHAIN_PATH=$(which holochain)
           # cp $HOLOCHAIN_PATH resources/bins/holochain-v0.3.0-beta-dev.32
 
-          curl -L --output resources/bins/holochain-v0.3.0-beta-dev.32 https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.32/holochain-v0.3.0-beta-dev.32-x86_64-unknown-linux-gnu
+          curl -L --output resources/bins/holochain-v0.3.0-beta-dev.32 https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.32/holochain-v0.3.0-beta-dev.32-x86_64-unknown-linux-gnu
           chmod +x ./resources/bins/holochain-v0.3.0-beta-dev.32
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
