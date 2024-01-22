@@ -72,11 +72,11 @@ jobs:
 
           curl -L --output resources/bins/lair-keystore-v0.3.0.exe https://github.com/matthme/launcher-electron/releases/download/lair-binaries-v0.3.0/lair-keystore-v0.3.0-x86_64-pc-windows-msvc.exe
 
-          # cargo install holochain --version 0.2.4 --locked --features sqlite-encrypted
+          # cargo install holochain --version 0.2.5-rc.0 --locked --features sqlite-encrypted
           # $HcPath = Get-Command holochain | Select-Object -ExpandProperty Definition
-          # Copy-Item $HcPath -Destination resources/bins/holochain-v0.2.4.exe
+          # Copy-Item $HcPath -Destination resources/bins/holochain-v0.2.5-rc.0.exe
 
-          curl -L --output resources/bins/holochain-v0.2.4.exe https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.2.4/holochain-v0.2.4-x86_64-pc-windows-msvc.exe
+          curl -L --output resources/bins/holochain-v0.2.5-rc.0.exe https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.2.5-rc.0/holochain-v0.2.5-rc.0-x86_64-pc-windows-msvc.exe
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
@@ -92,12 +92,12 @@ jobs:
           curl -L --output resources/bins/lair-keystore-v0.3.0 https://github.com/matthme/launcher-electron/releases/download/lair-binaries-v0.3.0/lair-keystore-v0.3.0-x86_64-apple-darwin
           chmod +x ./resources/bins/lair-keystore-v0.3.0
 
-          # cargo install holochain --version 0.2.4 --locked --features sqlite-encrypted
+          # cargo install holochain --version 0.2.5-rc.0 --locked --features sqlite-encrypted
           # HOLOCHAIN_PATH=$(which holochain)
-          # cp $HOLOCHAIN_PATH resources/bins/holochain-v0.2.4
+          # cp $HOLOCHAIN_PATH resources/bins/holochain-v0.2.5-rc.0
 
-          curl -L --output resources/bins/holochain-v0.2.4 https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.2.4/holochain-v0.2.4-x86_64-apple-darwin
-          chmod +x ./resources/bins/holochain-v0.2.4
+          curl -L --output resources/bins/holochain-v0.2.5-rc.0 https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.2.5-rc.0/holochain-v0.2.5-rc.0-x86_64-apple-darwin
+          chmod +x ./resources/bins/holochain-v0.2.5-rc.0
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
@@ -113,12 +113,12 @@ jobs:
           curl -L --output resources/bins/lair-keystore-v0.3.0 https://github.com/matthme/launcher-electron/releases/download/lair-binaries-v0.3.0/lair-keystore-v0.3.0-x86_64-unknown-linux-gnu
           chmod +x ./resources/bins/lair-keystore-v0.3.0
 
-          # cargo install holochain --version 0.2.4 --locked --features sqlite-encrypted
+          # cargo install holochain --version 0.2.5-rc.0 --locked --features sqlite-encrypted
           # HOLOCHAIN_PATH=$(which holochain)
-          # cp $HOLOCHAIN_PATH resources/bins/holochain-v0.2.4
+          # cp $HOLOCHAIN_PATH resources/bins/holochain-v0.2.5-rc.0
 
-          curl -L --output resources/bins/holochain-v0.2.4 https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.2.4/holochain-v0.2.4-x86_64-unknown-linux-gnu
-          chmod +x ./resources/bins/holochain-v0.2.4
+          curl -L --output resources/bins/holochain-v0.2.5-rc.0 https://github.com/matthme/launcher-electron/releases/download/holochain-binaries-v0.2.5-rc.0/holochain-v0.2.5-rc.0-x86_64-unknown-linux-gnu
+          chmod +x ./resources/bins/holochain-v0.2.5-rc.0
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
