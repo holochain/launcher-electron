@@ -1,6 +1,6 @@
 {
   "name": "holochain-launcher-electron",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": true,
   "description": "Holochain Launcher Electron (Prototype)",
   "main": "./out/main/index.js",
