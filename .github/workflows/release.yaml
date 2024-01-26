@@ -61,6 +61,16 @@ jobs:
           mkdir resources/default-apps
           yarn fetch:default-apps
 
+      - name: Install vcpkg Packages
+        if: matrix.os == 'windows-2019'
+        uses: johnwason/vcpkg-action@v6
+        id: vcpkg
+        with:
+          pkgs: libsodium
+          triplet: x64-windows-release
+          token: ${{ github.token }}
+          github-binarycache: true
+
       - name: setup binaries (Windows only)
         if: matrix.platform == 'windows-2019'
         run: |
@@ -72,6 +82,7 @@ jobs:
 
           curl -L --output resources/bins/lair-keystore-v0.4.1.exe https://github.com/holochain/launcher-electron/releases/download/lair-binaries-v0.4.1/lair-keystore-v0.4.1-x86_64-pc-windows-msvc.exe
 
+          $env:SODIUM_LIB_DIR="$(pwd)\vcpkg\packages\libsodium_x64-windows-release\lib"
           cargo install holochain --git https://github.com/holochain/holochain --rev 9da122ce568df660df41b3a2375f3824205191b6 --locked --features sqlite-encrypted
           $HcPath = Get-Command holochain | Select-Object -ExpandProperty Definition
           Copy-Item $HcPath -Destination resources/bins/holochain-v0.3.0-beta-dev.34-9da122.exe
