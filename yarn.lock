@@ -245,6 +245,21 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+"@bitgo/blake2b-wasm@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@bitgo/blake2b-wasm/-/blake2b-wasm-3.2.3.tgz#6ae5e942f2a5fd5b3ed27103af5df0ed50adfbc9"
+  integrity sha512-NaurBrMaEpjfg7EdUJgW/c6byt27O6q1ZaxB5Ita10MjjYjUu0SyYF4q7JPNxpHF/lMxb0YZakOxigbDBu9Jjw==
+  dependencies:
+    nanoassert "^1.0.0"
+
+"@bitgo/blake2b@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@bitgo/blake2b/-/blake2b-3.2.4.tgz#6440992affdeabc22b2de8b8f381f51b551dd513"
+  integrity sha512-46PEgEVPxecNJ/xczggIllSxIkFIvvbVM0OfIDdNJ5qpFHUeBCkNIiGdzC3fYZlsv7bVTdUZOj79GcFBLMYBqA==
+  dependencies:
+    "@bitgo/blake2b-wasm" "^3.2.3"
+    nanoassert "^2.0.0"
+
 "@colors/colors@1.6.0", "@colors/colors@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.6.0.tgz#ec6cd237440700bc23ca23087f513c75508958b0"
@@ -512,11 +527,12 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.56.0.tgz#ef20350fec605a7f7035a01764731b2de0f3782b"
   integrity sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==
 
-"@holochain/client@^0.16.3":
-  version "0.16.5"
-  resolved "https://registry.yarnpkg.com/@holochain/client/-/client-0.16.5.tgz#330e44198e9e1b13c0d97c25d65aa5b5a889e5a8"
-  integrity sha512-cJkhMQb3Biy1udgbqUAhRFQx4e+8QGGgkEO8xYxmdptPXn7wtnRsnVYgUSTVBl8U0lEpY6L92VuOAQoKK7gcPQ==
+"@holochain/client@0.17.0-dev.3":
+  version "0.17.0-dev.3"
+  resolved "https://registry.yarnpkg.com/@holochain/client/-/client-0.17.0-dev.3.tgz#82786eec3c41dcda58daae8f7fe4bbca4bb24f2b"
+  integrity sha512-+XiF0IO7E0mOj+FsXGkVn4AtGA3ZP+NkD7dQyMxVbZ7gG2RxGZrYZ3u8W8Q4RizB+szZMejkH0KodXQyomh2TA==
   dependencies:
+    "@bitgo/blake2b" "^3.2.4"
     "@holochain/serialization" "^0.1.0-beta-rc.3"
     "@msgpack/msgpack" "^2.8.0"
     "@tauri-apps/api" "^1.4.0"
@@ -2437,7 +2453,7 @@ hasown@^2.0.0:
     function-bind "^1.1.2"
 
 "hc-launcher-rust-utils@file:./rust-utils/dist":
-  version "0.0.0"
+  version "0.200.0"
 
 hosted-git-info@^4.1.0:
   version "4.1.0"
@@ -2984,6 +3000,16 @@ mz@^2.7.0:
     any-promise "^1.0.0"
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
+
+nanoassert@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/nanoassert/-/nanoassert-1.1.0.tgz#4f3152e09540fde28c76f44b19bbcd1d5a42478d"
+  integrity sha512-C40jQ3NzfkP53NsO8kEOFd79p4b9kDXQMwgiY1z8ZwrDZgUyom0AHwGegF4Dm99L+YoYhuaB0ceerUcXmqr1rQ==
+
+nanoassert@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/nanoassert/-/nanoassert-2.0.0.tgz#a05f86de6c7a51618038a620f88878ed1e490c09"
+  integrity sha512-7vO7n28+aYO4J+8w96AzhmU8G+Y/xpPDJz/se19ICsqj/momRbb9mh9ZUtkoJ5X3nTnPdhEJyc0qnM6yAsHBaA==
 
 nanoid@5.0.4:
   version "5.0.4"

@@ -74,9 +74,9 @@ jobs:
 
           cargo install holochain --git https://github.com/holochain/holochain --rev 9da122ce568df660df41b3a2375f3824205191b6 --locked --features sqlite-encrypted
           $HcPath = Get-Command holochain | Select-Object -ExpandProperty Definition
-          Copy-Item $HcPath -Destination resources/bins/holochain-v0.3.0-beta-dev-34-9da122.exe
+          Copy-Item $HcPath -Destination resources/bins/holochain-v0.3.0-beta-dev.34-9da122.exe
 
-          # curl -L --output resources/bins/holochain-v0.3.0-beta-dev-34-9da122.exe https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev-34-9da122/holochain-v0.3.0-beta-dev-34-x86_64-pc-windows-msvc.exe
+          # curl -L --output resources/bins/holochain-v0.3.0-beta-dev.34-9da122.exe https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.34-9da122/holochain-v0.3.0-beta-dev.34-x86_64-pc-windows-msvc.exe
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
@@ -94,10 +94,10 @@ jobs:
 
           cargo install holochain --git https://github.com/holochain/holochain --rev 9da122ce568df660df41b3a2375f3824205191b6 --locked --features sqlite-encrypted
           HOLOCHAIN_PATH=$(which holochain)
-          cp $HOLOCHAIN_PATH resources/bins/holochain-v0.3.0-beta-dev-34-9da122
+          cp $HOLOCHAIN_PATH resources/bins/holochain-v0.3.0-beta-dev.34-9da122
 
-          # curl -L --output resources/bins/holochain-v0.3.0-beta-dev-34-9da122 https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev-34-9da122/holochain-v0.3.0-beta-dev-34-x86_64-apple-darwin
-          # chmod +x ./resources/bins/holochain-v0.3.0-beta-dev-34-9da122
+          # curl -L --output resources/bins/holochain-v0.3.0-beta-dev.34-9da122 https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.34-9da122/holochain-v0.3.0-beta-dev.34-x86_64-apple-darwin
+          # chmod +x ./resources/bins/holochain-v0.3.0-beta-dev.34-9da122
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
@@ -115,10 +115,10 @@ jobs:
 
           cargo install holochain --git https://github.com/holochain/holochain --rev 9da122ce568df660df41b3a2375f3824205191b6 --locked --features sqlite-encrypted
           HOLOCHAIN_PATH=$(which holochain)
-          cp $HOLOCHAIN_PATH resources/bins/holochain-v0.3.0-beta-dev-34-9da122
+          cp $HOLOCHAIN_PATH resources/bins/holochain-v0.3.0-beta-dev.34-9da122
 
-          # curl -L --output resources/bins/holochain-v0.3.0-beta-dev-34-9da122 https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev-34-9da122/holochain-v0.3.0-beta-dev-34-x86_64-unknown-linux-gnu
-          # chmod +x ./resources/bins/holochain-v0.3.0-beta-dev-34-9da122
+          # curl -L --output resources/bins/holochain-v0.3.0-beta-dev.34-9da122 https://github.com/holochain/launcher-electron/releases/download/holochain-binaries-v0.3.0-beta-dev.34-9da122/holochain-v0.3.0-beta-dev.34-x86_64-unknown-linux-gnu
+          # chmod +x ./resources/bins/holochain-v0.3.0-beta-dev.34-9da122
 
           # NEW_VERSION: install new holochain version and copy its binary to the tauri path
 
