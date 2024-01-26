@@ -1,7 +1,7 @@
 #!/bin/bash
 
-REQUIRED_HOLOCHAIN_VERSION="0.2.4"
-REQUIRED_LAIR_VERSION="0.3.0"
+REQUIRED_HOLOCHAIN_VERSION="0.3.0-beta-dev-34"
+REQUIRED_LAIR_VERSION="0.4.1"
 
 # Check that this script is being run from the right location
 if [ ! -f "package.json" ] || [ ! -f "electron-builder.yml" ];

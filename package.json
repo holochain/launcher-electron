@@ -1,6 +1,6 @@
 {
   "name": "holochain-launcher-electron",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": true,
   "description": "Holochain Launcher Electron (Prototype)",
   "author": "Holochain Foundation <info@holochain.org> (http://holochain.org)",
