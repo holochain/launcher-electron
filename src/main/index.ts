@@ -87,7 +87,22 @@ cli
 
 cli.parse();
 
-console.log('GOT CLI ARGS: ', cli.opts());
+// console.log('GOT CLI ARGS: ', cli.opts());
+
+// In nix shell and on Windows SIGINT does not seem to be emitted so it is read from the command line instead.
+// https://stackoverflow.com/questions/10021373/what-is-the-windows-equivalent-of-process-onsigint-in-node-js
+const rl = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on('SIGINT', function () {
+  process.emit('SIGINT');
+});
+
+process.on('SIGINT', () => {
+  app.quit();
+});
 
 const [PROFILE, HOLOCHAIN_VERSION, LAIR_BINARY_PATH, BOOTSTRAP_URL, SIGNALING_URL] = validateArgs(
   cli.opts(),
