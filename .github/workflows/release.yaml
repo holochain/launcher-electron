@@ -50,17 +50,6 @@ jobs:
         with:
           go-version: 'stable'
 
-      - name: build rust-utils
-        run: yarn setup
-
-      - name: install app dependencies
-        run: yarn
-
-      - name: install default apps
-        run: |
-          mkdir resources/default-apps
-          yarn fetch:default-apps
-
       - name: Install vcpkg Packages
         if: matrix.os == 'windows-2019'
         uses: johnwason/vcpkg-action@v6
@@ -70,6 +59,19 @@ jobs:
           triplet: x64-windows-release
           token: ${{ github.token }}
           github-binarycache: true
+
+      - name: build rust-utils
+        run: |
+          $env:SODIUM_LIB_DIR="$(pwd)\vcpkg\packages\libsodium_x64-windows-release\lib"
+          yarn setup
+
+      - name: install app dependencies
+        run: yarn
+
+      - name: install default apps
+        run: |
+          mkdir resources/default-apps
+          yarn fetch:default-apps
 
       - name: setup binaries (Windows only)
         if: matrix.platform == 'windows-2019'
